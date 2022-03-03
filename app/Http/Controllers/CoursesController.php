@@ -90,12 +90,8 @@ class CoursesController extends Controller
             'title' => 'required',
             'slug' => ['required', Rule::unique('courses', 'slug')->ignore($course->id)],
             'description' => 'required',
-            'details' => 'string',
             'course_category_id' => ['required', Rule::exists('course_categories', 'id')],
-            'difficulty' => 'string',
             'graphic' => 'image',
-            'video' => 'string',
-            'runtime' => 'string',
             'brochure' => 'mimes:pdf,xlx,csv|max:2048',
             'price' => 'required',
         ]);
