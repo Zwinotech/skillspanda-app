@@ -48,13 +48,13 @@ class CoursesController extends Controller
             'title' => 'required',
             'slug' => ['required', Rule::unique('courses', 'slug')],
             'description' => 'required',
-            'details' => 'string',
+            'details' => 'nullable|string',
             'course_category_id' => ['required', Rule::exists('course_categories', 'id')],
-            'difficulty' => 'string',
+            'difficulty' => 'nullable|string',
             'graphic' => 'required|image',
-            'video' => 'string',
-            'runtime' => 'string',
-            'brochure' => 'mimes:pdf,xlx,csv|max:2048',
+            'video' => 'nullable|url',
+            'runtime' => 'nullable|string',
+            'brochure' => 'nullable|mimes:pdf,xlx,csv|max:2048',
             'price' => 'required',
             'status' => '$status'
         ]);
@@ -90,9 +90,13 @@ class CoursesController extends Controller
             'title' => 'required',
             'slug' => ['required', Rule::unique('courses', 'slug')->ignore($course->id)],
             'description' => 'required',
+            'details' => 'nullable|string',
             'course_category_id' => ['required', Rule::exists('course_categories', 'id')],
+            'difficulty' => 'nullable|string',
             'graphic' => 'image',
-            'brochure' => 'mimes:pdf,xlx,csv|max:2048',
+            'video' => 'nullable|url',
+            'runtime' => 'nullable|string',
+            'brochure' => 'nullable|mimes:pdf,xlx,csv|max:2048',
             'price' => 'required',
         ]);
 
