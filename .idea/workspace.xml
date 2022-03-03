@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c607f2bb-709b-4988-8197-19d4054df8cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CoursesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/CoursesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2022_02_25_215244_create_courses_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_02_25_215244_create_courses_table.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +167,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1646302740407</updated>
-      <workItem from="1646302742225" duration="9460000" />
+      <workItem from="1646302742225" duration="9761000" />
     </task>
     <servers />
   </component>
