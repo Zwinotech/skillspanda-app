@@ -144,6 +144,15 @@
                 </div>
 
                 <div>
+                    <label for="brochure" class="form-label">Brochure</label>
+                    <input name="brochure" id="brochure" type="file" />
+
+                    @error('brochure')
+                    <p>{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
                     <label for="crud-form-1" class="form-label">Video</label>
                     <input id="video" name="video" type="text" class="form-control w-full" value="{{ old('video', $course->video) }}">
 

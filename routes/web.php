@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function() {
     Route::post('courses/store', [CoursesController::class, 'store'])->name('courses/store');
     Route::get('courses/{course}/edit', [CoursesController::class, 'edit'])->name('courses/edit');
     Route::patch('courses/{course}', [CoursesController::class, 'update']);
+    Route::delete('courses/{course}', [CoursesController::class, 'destroy']);
 
     Route::controller(PageController::class)->group(function() {
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');

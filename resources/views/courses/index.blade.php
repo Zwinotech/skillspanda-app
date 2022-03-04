@@ -63,7 +63,7 @@
                             <td class="w-40">
                                 <div class="flex">
                                     <div class="w-10 h-10 image-fit zoom-in">
-                                        <img alt="{{ $course->name }}" class="tooltip rounded-full" src="/storage/{{ $course->graphic }}">
+                                        <img alt="{{ $course->name }}" class="tooltip rounded-full" src="storage/{{ $course->graphic }}">
                                     </div>
                                 </div>
                             </td>
@@ -81,9 +81,19 @@
                                     <a class="flex items-center mr-3" href="/courses/{{ $course->id }}/edit">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-                                    <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
-                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                    </a>
+
+                                    <form method="POST" action="/courses/{{ $course->id }}}">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button class="flex items-center text-danger">
+                                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                        </button>
+                                    </form>
+
+{{--                                    <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">--}}
+{{--                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete--}}
+{{--                                    </a>--}}
                                 </div>
                             </td>
                         </tr>

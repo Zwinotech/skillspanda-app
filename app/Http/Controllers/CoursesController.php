@@ -110,7 +110,7 @@ class CoursesController extends Controller
 
         $course->update($attributes);
 
-        return back()->with('Success', 'Course has been updated successfully.');
+        return redirect('/courses')->with('Success', 'Course has been updated successfully.');
 
 
 //        $attributes['facilitator_id'] = Auth::id();
@@ -123,8 +123,10 @@ class CoursesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Course $course)
     {
-        //
+        $course->delete();
+
+        return redirect('/courses')->with('Success', 'Course has been deleted successfully.');
     }
 }
