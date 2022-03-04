@@ -14,7 +14,9 @@ class CourseCategoryController extends Controller
      */
     public function index()
     {
-        CourseCategory::all();
+        return view('courses.categories.index', [
+            'categories' => CourseCategory::all()
+        ]);
     }
 
     public function createCategory(Request $request)

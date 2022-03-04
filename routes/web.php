@@ -35,12 +35,12 @@ Route::middleware('auth')->group(function() {
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::any('courses/categories/create', [CourseCategoryController::class, 'createCategory'])->name('courses/categories/create');
-    Route::get('categories', [CourseCategoryController::class, 'index'])->name('courses/categories');
+    Route::get('courses/categories', [CourseCategoryController::class, 'index'])->name('courses/categories');
     Route::get('courses', [CoursesController::class, 'index'])->name('courses');
     Route::get('courses/create', [CoursesController::class, 'create'])->name('courses/create');
     Route::post('courses/store', [CoursesController::class, 'store'])->name('courses/store');
     Route::get('courses/{course}/edit', [CoursesController::class, 'edit'])->name('courses/edit');
-    Route::post('courses/update', [CoursesController::class, 'update'])->name('courses/update');
+    Route::patch('courses/{course}', [CoursesController::class, 'update']);
 
     Route::controller(PageController::class)->group(function() {
         Route::get('dashboard-overview-2-page', 'dashboardOverview2')->name('dashboard-overview-2');

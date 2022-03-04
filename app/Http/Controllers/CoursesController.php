@@ -110,6 +110,9 @@ class CoursesController extends Controller
 
         $course->update($attributes);
 
+        return back()->with('Success', 'Course has been updated successfully.');
+
+
 //        $attributes['facilitator_id'] = Auth::id();
 
     }
