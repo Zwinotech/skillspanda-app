@@ -8,7 +8,7 @@
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">Edit Course</h2>
     </div>
-    <form method="post" enctype="multipart/form-data" action="{{ route("courses/update") }}">
+    <form method="post" enctype="multipart/form-data" action="/courses/{{ $course->id }}">
         @csrf
         @method('PATCH')
 
@@ -139,6 +139,15 @@
 
 
                     @error('graphic')
+                    <p>{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <div>
+                    <label for="brochure" class="form-label">Brochure</label>
+                    <input name="brochure" id="brochure" type="file" />
+
+                    @error('brochure')
                     <p>{{ $message }}</p>
                     @enderror
                 </div>

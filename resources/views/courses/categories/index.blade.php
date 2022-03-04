@@ -5,11 +5,11 @@
 @endsection
 
 @section('subcontent')
-    <h2 class="intro-y text-lg font-medium mt-10">Course</h2>
+    <h2 class="intro-y text-lg font-medium mt-10">Categories</h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <button class="btn btn-primary shadow-md mr-2">
-                <a href="{{ 'courses/create' }}">Add New Course</a>
+                <a href="{{ 'courses/create' }}">Add New Category</a>
             </button>
             <div class="dropdown">
                 <button class="dropdown-toggle btn px-2 box" aria-expanded="false" data-tw-toggle="dropdown">
@@ -50,50 +50,27 @@
             <table class="table table-report -mt-2">
                 <thead>
                     <tr>
-                        <th class="whitespace-nowrap">GRAPHIC</th>
-                        <th class="whitespace-nowrap">TITLE</th>
-                        <th class="text-center whitespace-nowrap">CATEGORY</th>
-                        <th class="text-center whitespace-nowrap">STATUS</th>
+                        <th class="whitespace-nowrap">NAME</th>
+                        <th class="whitespace-nowrap">SLUG</th>
                         <th class="text-center whitespace-nowrap">ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($courses as $course)
+                    @foreach ($categories as $category)
                         <tr class="intro-x">
-                            <td class="w-40">
-                                <div class="flex">
-                                    <div class="w-10 h-10 image-fit zoom-in">
-                                        <img alt="{{ $course->name }}" class="tooltip rounded-full" src="storage/{{ $course->graphic }}">
-                                    </div>
-                                </div>
-                            </td>
                             <td>
-                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $course->title }}</div>
+                                <div class="text-slate-500 text-xs whitespace-nowrap mt-0.5">{{ $category->name }}</div>
                             </td>
-                            <td class="text-center">{{ $course->course_category_id }}</td>
-                            <td class="w-40">
-                                <div class="flex items-center justify-centertext-success' : 'text-danger' }}">
-                                    <i data-lucide="check-square" class="w-4 h-4 mr-2"></i>  {{ $course->status }}
-                                </div>
-                            </td>
+                            <td class="">{{ $category->slug }}</td>
+
                             <td class="table-report__action w-56">
                                 <div class="flex justify-center items-center">
-                                    <a class="flex items-center mr-3" href="/courses/{{ $course->id }}/edit">
+                                    <a class="flex items-center mr-3" href="/courses/{{ $category->id }}/edit">
                                         <i data-lucide="check-square" class="w-4 h-4 mr-1"></i> Edit
                                     </a>
-
-                                    <form method="POST" action="/courses/{{ $course->id }}}">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button class="flex items-center text-danger">
-                                            <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
-                                        </button>
-                                    </form>
-
-{{--                                    <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">--}}
-{{--                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete--}}
-{{--                                    </a>--}}
+                                    <a class="flex items-center text-danger" href="javascript:;" data-tw-toggle="modal" data-tw-target="#delete-confirmation-modal">
+                                        <i data-lucide="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                                    </a>
                                 </div>
                             </td>
                         </tr>
