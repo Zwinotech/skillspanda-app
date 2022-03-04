@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description');
-            $table->text('details');
+            $table->text('details')->nullable();
             $table->decimal('price', 5, 2);
             $table->string('graphic');
             $table->string('brochure')->nullable();
