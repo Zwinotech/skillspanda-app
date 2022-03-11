@@ -67,6 +67,52 @@ class SideMenu
                     ],
                 ]
             ],
+            'users' => [
+                'icon' => 'edit',
+                'title' => 'Users',
+                'sub_menu' => [
+                    'users' => [
+                        'icon' => '',
+                        'route_name' => 'users',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'User List'
+                    ],
+                    'create-users' => [
+                        'icon' => '',
+                        'route_name' => 'users/create',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Create User'
+                    ],
+
+                ]
+            ],
+            'roles' => [
+                'icon' => 'edit',
+                'title' => 'Roles',
+                'sub_menu' => [
+                    'roles' => [
+                        'icon' => '',
+                        'route_name' => 'roles',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Roles'
+                    ],
+                    'create-roles' => [
+                        'icon' => '',
+                        'route_name' => 'roles/create',
+                        'params' => [
+                            'layout' => 'side-menu'
+                        ],
+                        'title' => 'Create Role'
+                    ],
+
+                ]
+            ],
 
         ];
     }

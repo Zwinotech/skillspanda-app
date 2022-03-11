@@ -7,7 +7,8 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\DarkModeController;
 use App\Http\Controllers\ColorSchemeController;
 use App\Http\Controllers\CourseCategoryController;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +31,23 @@ Route::controller(AuthController::class)->middleware('loggedin')->group(function
     Route::post('register', 'register')->name('register.store');
 });
 
+Route::group(['middleware' => 'impersonate'], function()
+{
+    // Routes for Impersonators
+});
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::resource('roles', RoleController::class);
+});
+
 Route::middleware('auth')->group(function() {
     Route::get('/', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+
+    // Impersonation
+    Route::get('/users/{id}/impersonate', [UserController::class, 'impersonate']);
+    Route::get('/users/stop', [UserController::class, 'stopImpersonate']);
 
     Route::any('courses/categories/create', [CourseCategoryController::class, 'createCategory'])->name('courses/categories/create');
     Route::get('courses/categories', [CourseCategoryController::class, 'index'])->name('courses/categories');

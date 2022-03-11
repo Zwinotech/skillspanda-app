@@ -4,6 +4,9 @@
     @yield('subhead')
 @endsection
 
+@include('flash::message')
+
+
 @section('content')
     @include('../layout/components/mobile-menu')
     @include('../layout/components/top-bar')

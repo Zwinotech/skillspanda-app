@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Session;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable, SoftDeletes;
+    use HasFactory, Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -22,7 +24,10 @@ class User extends Authenticatable
         'lastname',
         'username',
         'email',
-        'password'
+        'password',
+        'gender',
+        'active'
+
     ];
 
     /**
@@ -66,5 +71,24 @@ class User extends Authenticatable
 
     public function courses() {
         return $this->hasMany(Course::class);
+    }
+
+//    public function role() {
+//        return $this->belongsTo(Role::class);
+//    }
+
+    public function setImpersonating($id)
+    {
+        Session::put('impersonate', $id);
+    }
+
+    public function stopImpersonating()
+    {
+        Session::forget('impersonate');
+    }
+
+    public function isImpersonating()
+    {
+        return Session::has('impersonate');
     }
 }
